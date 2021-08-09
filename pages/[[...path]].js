@@ -35,6 +35,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { page:data.data.page },
+    revalidate: 1,
   }
 }
 
@@ -58,7 +59,7 @@ export async function getStaticPaths() {
   const pages_slug = data.data.pages.edges.map(edge=>(
       '/'+edge.node.slug
   ))
-console.log(pages_slug)
+
   return { paths:pages_slug, fallback: 'blocking' }
 
 }
